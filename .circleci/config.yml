@@ -19,6 +19,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .      
+      - run: ls
       - run: .circleci/deploy.sh
 
 workflows:
