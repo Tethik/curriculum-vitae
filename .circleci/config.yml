@@ -16,8 +16,9 @@ jobs:
     docker:
       - image: circleci/node:8.9
     steps:
+      - checkout
       - attach_workspace:
-          at: .
+          at: .      
       - run: git checkout master
       - run: git add cv.pdf
       - run: git commit -m "PDF build \#$CIRCLECI_BUILD_NUM"

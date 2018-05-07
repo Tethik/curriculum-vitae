@@ -1,10 +1,6 @@
-######################
-#      Makefile      #
-######################
-
 filename=cv
 
-pdf:
+pdf: # build twice, because latex.
 	xelatex ${filename} && xelatex ${filename}
 
 clean:
