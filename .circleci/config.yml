@@ -19,12 +19,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: .      
-      - run: git config --global user.email "circleci@blacknode.se"
-      - run: git config --global user.name "CircleCI Deployment"
-      - run: git checkout master
-      - run: git add cv.pdf
-      - run: git commit -m "PDF build \#$CIRCLECI_BUILD_NUM"
-      - run: git push origin master
+      - run: .circleci/deploy.sh
+
 
 
 
