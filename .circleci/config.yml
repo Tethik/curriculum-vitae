@@ -6,8 +6,23 @@ jobs:
     steps:
       - checkout
       - run: make 
-      - store_artifacts:
-          path: cv.pdf
+      - persist_to_workspace:
+          root: .
+          paths:
+            - cv.pdf
+      # - store_artifacts:
+      #     path: cv.pdf
+  deploy:
+    docker:
+      - image: circleci/node:8.9
+    steps:
+      - attach_workspace:
+          at: .
+      - run: git checkout master
+      - run: git add cv.pdf
+      - run: git commit -m "PDF build \#$CIRCLECI_BUILD_NUM"
+      - run: git push origin master
+
 
 
 workflows:
@@ -19,6 +34,14 @@ workflows:
             branches:
               only: 
                 - circleci          
-                - master
+                - develop
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: 
+                - develop
+
 
 
