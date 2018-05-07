@@ -6,6 +6,7 @@ CI/CD for my CV. LateX template originally was taken from sharelatex.
 docker run --rm -v $(pwd):/data tethik/xelatex make
 ```
 
+
 - [x] CV
 - [x] CI
 - [ ] CD
