@@ -1,0 +1,195 @@
+\documentclass[a4paper,10pt]{article}
+
+%A Few Useful Packages
+\usepackage{marvosym}
+\usepackage{fontspec} 					%for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[big]{layaureo} 				%better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
+
+%Setup hyperref package, and colours for links
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+%%% modified for Karol Kozioł for ShareLaTeX use
+\setmainfont[
+SmallCapsFont = Fontin-SmallCaps.otf,
+BoldFont = Fontin-Bold.otf,
+ItalicFont = Fontin-Italic.otf
+]
+{Fontin.otf}
+%%%
+
+\renewcommand\thesection{}
+\renewcommand\thesubsection{}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+%Tweak a bit the top margin
+%\addtolength{\voffset}{-1.3cm}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%-------------WATERMARK TEST [**not part of a CV**]---------------
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+%--------------------BEGIN DOCUMENT----------------------
+\begin{document}
+
+%WATERMARK TEST [**not part of a CV**]---------------
+%\font\wm=''Baskerville:color=787878'' at 8pt
+%\font\wmweb=''Baskerville:color=FF1493'' at 8pt
+%{\wm 
+%	\begin{textblock}{1}(0,0)
+%		\rotatebox{-90}{\parbox{500mm}{
+%			Typeset by Alessandro Plasmati with \XeTeX\  \today\ for 
+%			{\wmweb \href{http://www.aleplasmati.comuv.com}{aleplasmati.comuv.com}}
+%		}
+%	}
+%	\end{textblock}
+%}
+
+\pagestyle{empty} % non-numbered pages
+
+\font\fb=''[cmr10]'' %for use with \LaTeX command
+
+%--------------------TITLE-------------
+\par{\centering
+		{\Huge Joakim \textsc{Uddholm}
+	}\bigskip\par}
+
+%--------------------SECTIONS-----------------------------------
+%Section: Personal Data
+\section{Personal Data}
+
+%    \textsc{Place and Date of Birth:} & Stockholm, Sweden  | dd Month 1912 \\
+%  \textsc{Address:}   & CV Inn 19, 20301, Milano, Italy \\
+
+\begin{tabular}{rl}
+    \textsc{email:}     & \href{mailto:joakim@uddholm.com}{joakim@uddholm.com}\\
+    \textsc{website:}   & \href{http://joakim.uddholm.com}{http://joakim.uddholm.com}\\    
+    \textsc{github:}   & \href{https://github.com/Tethik}{https://github.com/Tethik}\\    
+\end{tabular}
+
+\section{Summary}
+I am a newly graduated Master in Computer Science who studied at KTH in Stockholm, Sweden. My focus was on computer security. Since the age of 17, I've also worked part time as a professional programmer. I've worked a lot with web development, but also with scraping and some mobile app development. The past few years I've also focused on security. I've performed some minor penetration tests, as well as contributed by finding and disclosing vulnerabilities to companies. 
+
+I am confident in my ability as a software engineer, backed by a combination of theoretical and practical experience from having studied and worked at the same time. My keen interest in the subject will ensure that I always keep learning.
+
+
+
+%Section: Work Experience at the top
+\section{Work Experience}
+\begin{tabular}{r|p{11cm}}
+ \emph{Current} & Software Engineer at \textsc{Massagio GmbH} \\
+ \textsc{July 2017}&\emph{Berlin based Startup}\\
+ &\footnotesize{Tasked with maintaining and developing new features for the Massagio platform as the company rapidly grows. Multi-programming language development in a modern microservice infrastructure. As a full stack developer in a very small team I got to interact with most parts of the system and infrastructure. Specific projects: geospatial querying using postgis, authentication/authorization microservice rewrite, and a cache for fast availability querying.}\\ \multicolumn{2}{c}{} \\
+
+ \textsc{Jan 2015 - July 2017} & Self-Employed at \textsc{Blacknode} \\
+ &\emph{Programming and Penetration Testing}\\
+ &\footnotesize{I perform penetration testing focused on Network-, Application-, and Web Security, as well as take on more specialized programming projects. I reverse engineered an Android application and assessed store-networks for vulnerabilities for a major coffee-shop company (100+ stores). I built multiple web-scrapers with infrastructure for a major Scandinavian retail chain to gather information about competitors' products and prices.}\\\multicolumn{2}{c}{} \\
+ 
+ \textsc{May-Oct 2015} & Part-time Security Consultant and Programmer at \textsc{Bambora}\\
+ &\emph{Mobile Payment Company}\\&\footnotesize{Short term hire after finding vulnerabilities in the mobile payment platform delivered by Bambora. Performed penetration tests and prototyped new features to improve security at the mobile division of Bambora. Added encryption for locally stored user credentials to better secure the user data stored on a phone against e.g. theft. Prototyped platform-authentication for clients using BankID. Focused on web and mobile security. Android and Python development.}\\\multicolumn{2}{c}{} \\
+ 
+\textsc{Aug 2013 - May 2015} & Part-time Security Consultant and Programmer at \textsc{Payson AB}\\
+&\emph{Online Payment Platform}
+\\&\footnotesize{Tasked with finding vulnerabilities in Payson's systems. Programming frontend and backend in C\# .NET. In addition to helping out with new functionality on the website, I had my own project involving web scraping and regularily data mining thousands of sites. }\\\multicolumn{2}{c}{} \\
+
+\textsc{Dec 2007 - Dec 2013} & Part-time Programmer at \textsc{Awave AB}\\
+&\emph{Web Development and Programming Consultancy Shop}
+\\&\footnotesize{
+Programming websites in PHP and .NET. Mostly "backoffice" adminstrative applications, with lots of obtuse SQL queries. Created three iPhone apps in Mono Xamarin. Desktop applications for invoicing and accounting on Windows. Server administration and setup in Linux and Windows. Security auditing/pentesting of websites. }
+
+
+\end{tabular}
+
+%Section: Education
+\section{Education}
+\begin{tabular}{rl}	
+ \textsc{January} 2017 & Master of Computer Science, \textbf{KTH Royal Institute of Technology}, Stockholm\\
+&Major: Computer Security\\
+& Thesis: ``Anonymous Javascript Cryptography and Cover Traffic in Whistleblowing\\& Applications'' | \small Supervisor: Prof. Sonja \textsc{Buchegger}\\ \\
+%&\normalsize \textsc{Gpa}: 28.61/30\hyperlink{grds}{\hfill | \footnotesize Detailed List of Exams}\\&\\
+
+\textsc{July} 2013 & Bachelor of Computer Science, \textbf{KTH Royal Institute of Technology}, Stockholm\\
+& Thesis: ``Voting Mix-Net'' | \small Supervisor: Douglas \textsc{Wikström}\\ \\
+\end{tabular}
+
+%Section: Work Experience at the top
+\section{Volunteering Work}
+\begin{tabular}{r|p{11cm}}
+ \emph{Current} & \textsc{Security Without Borders} \\
+ \textsc{December 2016}&\emph{Volunteering Organisation}\\
+ &\footnotesize{At SWB I currently help with maintaining and coding new features for the main www.securitywithoutborders.org website.} \\ \multicolumn{2}{c}{} \\
+ 
+\end{tabular}
+
+%Section: Scholarships and additional info
+\section{Scholarships and Certificates}
+\begin{tabular}{rl}
+ \textsc{2010} & Cambridge Certificate of Proficiency in English (CPE): Grade A \\
+\textsc{2009} & Cambridge English: Advanced (CAE): Grade A
+\end{tabular}
+
+%Section: Languages
+\section{Languages}
+\begin{tabular}{rl}
+\textsc{Swedish:}& Modersmål (Mothertongue)\\
+\textsc{English:}& Fluent (I lived in England for 4 years as a child)\\
+\textsc{German:}& Basic Knowledge (A2)\\
+\end{tabular}
+
+\section{Computer Skills}
+\begin{tabular}{rl}
+ Advanced Knowledge:& \textsc{Python}, Java, .NET (C\#), PHP, JavaScript, Linux, SQL, Webapp security,\\& Webscraping, HTML/CSS\\
+ Basic Knowledge:&  \textsc{Android}, C/C++, Rust, Ruby, Prolog, Haskell  \\
+\end{tabular}
+
+\section{Interests and Activities}
+Technology, Open-Source, Programming, Cryptography, Computer Security\\
+Video-games, Philosophy, Baking
+
+\newpage
+
+\section{Project Showcase}
+These are some open source projects I've worked on. A more complete project list can be supplied upon request. I also have more projects on my github account, which you can find here: \href{https://github.com/Tethik}{https://github.com/Tethik}\\
+
+\subsection{Burn After Reading}
+A simple to use webservice for securely sending secrets. It works by encrypting texts in javascript, sending the key in such a way that the server should not see it. The server then stores the text in memory until either the recipient decides to "burn" the text or the time expires. I use it to send passwords and other secrets that I don't want to be kept saved in e.g. an email inbox or chat thread. Coded in javascript and python.
+
+Demo: \href{https://burn.blacknode.se}{https://burn.blacknode.se}\\
+Src: \href{https://github.com/Tethik/burn-after-reading}{https://github.com/Tethik/burn-after-reading}\\
+
+\subsection{Tamperfree}
+A tool to verify static content on tor hidden service websites. It uses selenium to emulate the tor browser bundle in order to make a verifier that looks and acts just like a normal tor user would. By doing this I hope to achieve indistinguishability from a real user, so that the server can not differentiate between the verifier and real user. Mostly a proof of concept. Coded in python.
+
+Src: \href{https://github.com/Tethik/tamperfree}{https://github.com/Tethik/tamperfree}
+
+
+\subsection{PYPI Python Packages}
+Throughout 2016-2017 I published some smaller python packages in the official python package index.
+
+\begin{itemize}
+\item Badger. A simple commandline program to generate SVG badges offline.\\ \href{https://pypi.python.org/pypi/badger}{https://pypi.python.org/pypi/badger}
+\item Flask-Session-Captcha. A captcha generator for the Flask framework.\\ \href{https://pypi.python.org/pypi/flask-session-captcha}{https://pypi.python.org/pypi/flask-session-captcha}
+\item simplegeoip. A simple wrapper library for getting geolocation from an ip.\\ \href{https://pypi.python.org/pypi/simplegeoip}{https://pypi.python.org/pypi/simplegeoip}
+\end{itemize}
+
+\end{document}
