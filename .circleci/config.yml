@@ -10,8 +10,6 @@ jobs:
           root: .
           paths:
             - cv.pdf
-      # - store_artifacts:
-      #     path: cv.pdf
   deploy:
     docker:
       - image: circleci/node:8.9
