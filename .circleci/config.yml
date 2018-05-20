@@ -77,12 +77,25 @@ workflows:
                 - develop
                               
     jobs:
-      - build_partials
+      - build_partials:
+          filters:
+            branches:
+              only:                 
+                - develop
+
       - build_pdf:
+          filters:
+            branches:
+              only:                 
+                - develop
           requires:
             - build_partials
 
       - deploy:
+          filters:
+            branches:
+              only:                 
+                - develop
           requires:
             - build_pdf
 
