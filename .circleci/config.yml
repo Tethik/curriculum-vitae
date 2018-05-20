@@ -1,0 +1,103 @@
+version: 2
+jobs:
+  build_partials:
+    docker:
+      - image: kennethreitz/pipenv
+    steps:
+      - checkout      
+      - run: 
+          command: pipenv install 
+          working_directory: ~/project/src/github/
+      - run: 
+          command: pipenv run make
+          working_directory: ~/project/src/github/
+      - persist_to_workspace:
+          root: .
+          paths:
+            - partials/
+
+  build_pdf:
+    docker:
+      - image: tethik/xelatex:latest
+    steps:
+      - checkout
+      - run: make 
+      - attach_workspace:
+          at: .  
+      - persist_to_workspace:
+          root: .
+          paths:
+            - cv.pdf
+  
+  deploy:
+    docker:
+      - image: circleci/node:8.9
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .      
+      - run: ls
+      - run: .circleci/deploy.sh
+
+workflows:
+  version: 2
+  commit:                             
+    jobs:
+      - build_partials:
+          filters:
+            branches:
+              only: 
+                - circleci          
+                - develop
+
+      - build_pdf:
+          requires:
+            - build_partials
+          filters:
+            branches:
+              only: 
+                - circleci          
+                - develop
+
+      - deploy:
+          requires:
+            - build_pdf
+          filters:
+            branches:
+              only: 
+                - develop
+
+  monthly:
+    triggers:
+      - schedule:
+          cron: "0 0 1 * *"
+          filters:
+            branches:
+              only:
+                - develop
+                              
+    jobs:
+      - build_partials:
+          filters:
+            branches:
+              only:                 
+                - develop
+
+      - build_pdf:
+          filters:
+            branches:
+              only:                 
+                - develop
+          requires:
+            - build_partials
+
+      - deploy:
+          filters:
+            branches:
+              only:                 
+                - develop
+          requires:
+            - build_pdf
+
+
+
