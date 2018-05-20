@@ -3,6 +3,8 @@
 git config --global user.email "circleci@blacknode.se"
 git config --global user.name "CircleCI Deployment"
 mv cv.pdf ..
+git fetch --all
+git reset --hard origin/develop
 git checkout master
 mv ../cv.pdf .
 git add cv.pdf
