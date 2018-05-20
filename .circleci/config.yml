@@ -1,20 +1,36 @@
 version: 2
 jobs:
-  build:
+  build_partials:
+    docker:
+      - image: kennethreitz/pipenv
+    steps:
+      - checkout
+      - run: cd src/github/
+      - run: pipenv install 
+      - run: pipenv run make
+      - persist_to_workspace:
+          root: .
+          paths:
+            - partials/
+
+  build_pdf:
     docker:
       - image: tethik/xelatex:latest
     steps:
-      - checkout
+      # - checkout
       - run: make 
+      - attach_workspace:
+          at: .  
       - persist_to_workspace:
           root: .
           paths:
             - cv.pdf
+  
   deploy:
     docker:
       - image: circleci/node:8.9
     steps:
-      - checkout
+      # - checkout
       - attach_workspace:
           at: .      
       - run: ls
@@ -24,12 +40,22 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build:
+      - build_partials:
           filters:
             branches:
               only: 
                 - circleci          
                 - develop
+
+      - build:
+          requires:
+            - build_partials
+          filters:
+            branches:
+              only: 
+                - circleci          
+                - develop
+
       - deploy:
           requires:
             - build

@@ -10,6 +10,10 @@
 % an alternative to Layaureo can be ** \usepackage{fullpage} **
 \usepackage{supertabular} 				%for Grades
 \usepackage{titlesec}					%custom \section
+\usepackage{xelatexemoji}
+
+\usepackage{subfiles}
+\graphicspath{{images/}{../images/}}
 
 %Setup hyperref package, and colours for links
 \usepackage{hyperref}
@@ -143,7 +147,7 @@ Programming websites in PHP and .NET. Mostly "backoffice" adminstrative applicat
 \section{Languages}
 \begin{tabular}{rl}
 \textsc{Swedish:}& Modersmål (Mothertongue)\\
-\textsc{English:}& Fluent (I lived in England for 4 years as a child)\\
+\textsc{English:}& Fluent\\
 \textsc{German:}& Basic Knowledge (A2)\\
 \end{tabular}
 
@@ -182,5 +186,9 @@ Throughout 2016-2017 I published some smaller python packages in the official py
 \item Flask-Session-Captcha. A captcha generator for the Flask framework.\\ \href{https://pypi.python.org/pypi/flask-session-captcha}{https://pypi.python.org/pypi/flask-session-captcha}
 \item simplegeoip. A simple wrapper library for getting geolocation from an ip.\\ \href{https://pypi.python.org/pypi/simplegeoip}{https://pypi.python.org/pypi/simplegeoip}
 \end{itemize}
+
+\newpage
+\subsection{Github Open Source Contributions}
+\subfile{partials/pull_requests}
 
 \end{document}

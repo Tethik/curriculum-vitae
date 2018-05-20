@@ -1,0 +1,14 @@
+\documentclass[../cv.tex]{subfiles}
+ 
+\begin{document}
+This table shows which open source projects on github I've contributed code to via Pull Requests.
+
+\begin{tabular}{llll}
+\textbf{Stars} & \textbf{Repository} & \textbf{Languages} & \textbf{Additions / Deletions} \\
+<< for pr in prs >>
+⭐ <= pr['stars'] => & <= pr['repo'] => & <= pr['languages'] => & (+<= pr['additions'] =>/-<= pr['deletions'] =>)\\
+<< endfor >>
+\end{tabular}
+
+\end{document}
+
