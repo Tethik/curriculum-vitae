@@ -41,15 +41,7 @@ jobs:
 
 workflows:
   version: 2
-  build_and_deploy:
-    triggers:
-      - schedule:
-          cron: "0 0 1 * *"
-          filters:
-            branches:
-              only:
-                - develop
-                              
+  commit:                             
     jobs:
       - build_partials:
           filters:
@@ -74,6 +66,25 @@ workflows:
             branches:
               only: 
                 - develop
+
+  monthly:
+    triggers:
+      - schedule:
+          cron: "0 0 1 * *"
+          filters:
+            branches:
+              only:
+                - develop
+                              
+    jobs:
+      - build_partials
+      - build_pdf:
+          requires:
+            - build_partials
+
+      - deploy:
+          requires:
+            - build_pdf
 
 
 
