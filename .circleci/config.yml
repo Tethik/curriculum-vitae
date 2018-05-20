@@ -4,10 +4,13 @@ jobs:
     docker:
       - image: kennethreitz/pipenv
     steps:
-      - checkout
-      - run: cd src/github/
-      - run: pipenv install 
-      - run: pipenv run make
+      - checkout      
+      - run: 
+          command: pipenv install 
+          working_directory: ~/project/src/github/
+      - run: 
+          command: pipenv run make
+          working_directory: ~/project/src/github/
       - persist_to_workspace:
           root: .
           paths:
@@ -17,7 +20,7 @@ jobs:
     docker:
       - image: tethik/xelatex:latest
     steps:
-      # - checkout
+      - checkout
       - run: make 
       - attach_workspace:
           at: .  
@@ -30,7 +33,7 @@ jobs:
     docker:
       - image: circleci/node:8.9
     steps:
-      # - checkout
+      - checkout
       - attach_workspace:
           at: .      
       - run: ls
