@@ -1,4 +1,6 @@
 # curriculum-vitae
+[![CircleCI](https://circleci.com/gh/Tethik/curriculum-vitae/tree/develop.svg?style=svg)](https://circleci.com/gh/Tethik/curriculum-vitae/tree/develop)
+
 CI/CD for my CV. 
 
 The LateX in this repo gets built on CircleCI via a Docker image. The pdf is committed and pushed back into 
