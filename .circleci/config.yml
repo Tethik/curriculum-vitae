@@ -20,10 +20,10 @@ jobs:
     docker:
       - image: tethik/xelatex:latest
     steps:
-      - checkout
-      - run: make 
+      - checkout      
       - attach_workspace:
           at: .  
+      - run: make 
       - persist_to_workspace:
           root: .
           paths:
