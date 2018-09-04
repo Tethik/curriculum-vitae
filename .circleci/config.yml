@@ -76,10 +76,10 @@ workflows:
       - debug:
           requires:
             - build_pdf
-            filters:
-              branches:
-                only: 
-                  - develop
+          filters:
+            branches:
+              only: 
+                - develop
 
   monthly:
     triggers:
