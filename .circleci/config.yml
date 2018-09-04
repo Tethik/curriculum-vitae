@@ -29,6 +29,14 @@ jobs:
           paths:
             - cv.pdf
   
+  debug:
+    docker:
+      - image: circleci/node:8.9
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .      
+
   deploy:
     docker:
       - image: circleci/node:8.9
@@ -65,6 +73,13 @@ workflows:
             branches:
               only: 
                 - develop
+      - debug:
+          requires:
+            - build_pdf
+            filters:
+              branches:
+                only: 
+                  - develop
 
   monthly:
     triggers:
