@@ -1,9 +1,11 @@
 import os
 from collections import defaultdict
 import requests # pip install 
-import crayons # get from pypi
 import json
 import jinja2
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
 
 pagination = "null"
 query = """
@@ -65,6 +67,11 @@ while True:
     resp = requests.post(GITHUB_GRAPHQL_URL, \
             json={"query": query, "variables": variables}, \
             headers={"Authorization": f"Bearer {GITHUB_ACCESS_TOKEN}"})
+    
+    if resp.status_code != 200:
+        print(resp.text)
+        break
+
     data = resp.json()
 
     pullrequests += data["data"]["viewer"]["pullRequests"]["nodes"]
